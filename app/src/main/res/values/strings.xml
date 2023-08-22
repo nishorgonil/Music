@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AuraFlx</string>
+    <string name="AuraFlx">AuraFlx</string>
+    <string name="title_activity_log_in">logIn</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_activity_login">Login</string>
+</resources>
