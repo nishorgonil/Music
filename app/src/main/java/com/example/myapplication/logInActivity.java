@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -38,7 +39,7 @@ public class logInActivity extends Activity {
         myTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(logInActivity.this, "SignUp clicked!", Toast.LENGTH_SHORT).show();
+                signup();
             }
         });
 
@@ -77,6 +78,9 @@ public class logInActivity extends Activity {
         myImageView2.startAnimation(rotateAnimation2);
 
     }
-
+    protected void signup(){
+        Intent intent = new Intent(this, signUp.class);
+        startActivity(intent);
+    }
 
 }
