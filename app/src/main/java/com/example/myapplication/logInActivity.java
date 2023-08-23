@@ -2,6 +2,11 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class logInActivity extends Activity {
+public class logInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,34 +30,14 @@ public class logInActivity extends Activity {
         decorView.setSystemUiVisibility(flags);
         setContentView(R.layout.activity_log_in);
 
-        Button myButton = findViewById(R.id.button);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        myButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(logInActivity.this, "LogIn clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        login lll = new login(); // Instantiate the fragment
+        fragmentTransaction.replace(R.id.fragmentContainer, lll);
+        fragmentTransaction.commit();
 
-        TextView myTextView = findViewById(R.id.textView8);
-
-        myTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signup();
-            }
-        });
-
-        TextView myTextView2 = findViewById(R.id.textView7);
-
-        myTextView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(logInActivity.this, "Reset password clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ImageView myImageView = findViewById(R.id.imageView5);
+        ImageView myImageView = findViewById(R.id.imageView6);
 
         RotateAnimation rotateAnimation = new RotateAnimation(0, 360,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -65,7 +50,7 @@ public class logInActivity extends Activity {
 
         myImageView.startAnimation(rotateAnimation);
 
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ImageView myImageView2 = findViewById(R.id.imageView6);
+        ImageView myImageView2 = findViewById(R.id.imageView8);
 
         RotateAnimation rotateAnimation2 = new RotateAnimation(0, -360,
                 Animation.RELATIVE_TO_SELF, 0.5f,
@@ -75,12 +60,8 @@ public class logInActivity extends Activity {
         rotateAnimation2.setRepeatCount(Animation.INFINITE);
         rotateAnimation2.setInterpolator(new LinearInterpolator());
 
-        myImageView2.startAnimation(rotateAnimation2);
 
-    }
-    protected void signup(){
-        Intent intent = new Intent(this, signUp.class);
-        startActivity(intent);
+        myImageView2.startAnimation(rotateAnimation2);
     }
 
 }
